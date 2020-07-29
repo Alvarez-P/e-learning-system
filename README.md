@@ -46,7 +46,7 @@ Ejecute la migracion con:
 sequelize db:migrate
 ```
 ## Built With :hammer_and_wrench:
-- [Node]((https://nodejs.org/es/))
+- [Node](https://nodejs.org/es/)
     * [Express](https://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
 
