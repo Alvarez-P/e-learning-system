@@ -33,7 +33,7 @@ docker-compose up -d
 
 Cree la base de datos con el comando:
 ```sh
-sequelize db:create
+sequelize db:create --env=<value>
 ```
 
 Agregue modelos con el comando:
@@ -43,8 +43,9 @@ sequelize model:generate --name User --attributes firstName:string,lastName:stri
 
 Ejecute la migracion con:
 ```sh
-sequelize db:migrate
+sequelize db:migrate  --env=<value>
 ```
+`value` puede tomar los valores: `development`, `test`, `production`
 ## Built With :hammer_and_wrench:
 - [Node]((https://nodejs.org/es/))
     * [Express](https://expressjs.com/)
