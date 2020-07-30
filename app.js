@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const api = require('./src/routes')
+const { handleErrors } = require('./src/middlewares/errors')
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -12,5 +13,6 @@ app.use(cors())
 
 // Routes
 app.use('/api', api)
+app.use(handleErrors)
 
 module.exports = app
