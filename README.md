@@ -46,6 +46,18 @@ Ejecute la migracion con:
 sequelize db:migrate  --env="value"
 ```
 `value` puede tomar los valores: `development`, `test`, `production`
+
+Inicie el servidor con el comando:
+```sh
+nodemon
+```
+Para ver la documentacion ingrese a la ruta: `http://localhost:5000/api/docs`
+
+Ejecute los tests con:
+```sh
+npm run test
+```
+
 ## Built With :hammer_and_wrench:
 - [Node](https://nodejs.org/es/)
     * [Express](https://expressjs.com/)
