@@ -13,7 +13,7 @@ Para usar el presente proyecto es necesario tener instalado:
 - [Node y Npm](https://nodejs.org/es/)
 - [Docker](https://www.docker.com/)
 - [Docker-Compose](https://docs.docker.com/compose/)
-- [Sequelize-CLI](https://www.npmjs.com/package/sequelize-cli)
+- [Sequelize-CLI](https://www.npmjs.com/package/sequelize-cli) (Globalmente)
 
 ### Installing :arrow_down:
 
@@ -43,7 +43,7 @@ sequelize model:generate --name User --attributes firstName:string,lastName:stri
 
 Ejecute la migracion con:
 ```sh
-sequelize db:migrate  --env=<value>
+sequelize db:migrate  --env="value"
 ```
 `value` puede tomar los valores: `development`, `test`, `production`
 ## Built With :hammer_and_wrench:
@@ -74,6 +74,7 @@ Please read [CONTRIBUTING.md](https://www.aaaimx.org/cod) for details on our cod
 1. [Sequelize-Cli](https://github.com/sequelize/cli)
 2. [Sequelize](https://sequelize.org/master/index.html)
 3. [Express](https://expressjs.com/)
+4. [Swagger](https://swagger.io/specification/)
 
 ## License :page_facing_up:
 
