@@ -1,0 +1,76 @@
+{
+   "swagger": "2.0",
+   "info": {
+     "title": "E-Learning System",
+     "description": "E-Learning System Documentation",
+     "version": "1.0"
+   },
+   "produces": ["application/json"],
+   "host": "localhost:5000",
+   "basePath": "/",
+   "paths": {
+     "/api/users": {
+       "post": {
+         "x-swagger-router-controller": "middleware-name1",
+         "operationId": "Save Users",
+         "tags": ["/users"],
+         "description": "Save new users",
+         "parameters": [
+            {
+              "name":"UserName",
+              "description": "Name",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name":"UserLastName",
+              "description": "Last Name",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },	
+            {
+              "name":"UserEmail",
+              "description": "Name",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },	
+            {
+              "name":"UserPassword",
+              "description": "Password(8 characters minimum)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },	
+            {
+              "name":"UserRol",
+              "description": "admin/user/student/teacher",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name":"UserActive",
+              "description": "Name",
+              "required": true,
+              "schema": {
+                "type": "boolean"
+              }
+            }
+         ],
+         "responses": {
+           "200": {
+             "description": "{ uuid:uuid, message: Success }"
+           }
+         }
+       }
+     }
+   }
+}
