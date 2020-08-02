@@ -14,7 +14,7 @@ const { addCourseOnDB} = require('../db/methods/courseTemplate');
      try{
          req.body.CourseTemplateID = genrateID();
         const result = await addCourseOnDB(req.body, next);
-        res.status(201).send( {uuid: result.CourseTemplateID, message: 'Succes'});
+        res.status(201).send( {uuid: result.CourseTemplateID, message: 'Success'});
      }catch(error){
          next(error);
      }

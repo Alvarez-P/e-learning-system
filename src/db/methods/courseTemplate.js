@@ -1,4 +1,4 @@
-const { CourseTemplate } = require('../models/index');
+const { CourseTemplates } = require('../models/index');
 const { HttpError } = require('../../utils/HttpError');
 
 /**
@@ -8,9 +8,9 @@ const { HttpError } = require('../../utils/HttpError');
  * @param {Function} next - Express middleware function
  */
 
- const addCourseOnDB = async (user, next) => {
+ const addCourseOnDB = async (course, next) => {
      try{
-         const res = await CourseTemplate.create(user);
+         const res = await CourseTemplates.create(course);
          if(!res.dataValues) throw new HttpError();
          return res.dataValues
      }catch(error){
