@@ -1,76 +1,114 @@
 {
-   "swagger": "2.0",
-   "info": {
-     "title": "E-Learning System",
-     "description": "E-Learning System Documentation",
-     "version": "1.0"
-   },
-   "produces": ["application/json"],
-   "host": "localhost:5000",
-   "basePath": "/",
-   "paths": {
-     "/api/users": {
-       "post": {
-         "x-swagger-router-controller": "middleware-name1",
-         "operationId": "Save Users",
-         "tags": ["/users"],
-         "description": "Save new users",
-         "parameters": [
-            {
-              "name":"UserName",
-              "description": "Name",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
+    "swagger": "2.0",
+    "info": {
+        "title": "E-Learning System",
+        "description": "E-Learning System Documentation",
+        "version": "1.0"
+    },
+    "produces": ["application/json"],
+    "host": "localhost:5000",
+    "basePath": "/",
+    "paths": {
+        "/api/users": {
+            "post": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "Save Users",
+                "tags": ["/users"],
+                "description": "Save new users",
+                "parameters": [{
+                        "name": "UserName",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "UserLastName",
+                        "description": "Last Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "UserEmail",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "UserPassword",
+                        "description": "Password(8 characters minimum)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "UserRol",
+                        "description": "admin/user/student/teacher",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "UserActive",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{ uuid:uuid, message: Success }"
+                    }
+                }
             },
-            {
-              "name":"UserLastName",
-              "description": "Last Name",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },	
-            {
-              "name":"UserEmail",
-              "description": "Name",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },	
-            {
-              "name":"UserPassword",
-              "description": "Password(8 characters minimum)",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },	
-            {
-              "name":"UserRol",
-              "description": "admin/user/student/teacher",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },
-            {
-              "name":"UserActive",
-              "description": "Name",
-              "required": true,
-              "schema": {
-                "type": "boolean"
-              }
+            "get": {
+                "summary": "Returns a list of users",
+                "tags": ["/users"],
+                "parameters": [{
+                    "in": "query",
+                    "name": "offset",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "description": "Number that starts at zero but can be changed"
+                }, {
+                    "in": "query",
+                    "name": "limit",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "description": "Number that has a default limit of twenty but can be changed"
+                }, {
+                    "in": "query",
+                    "name": "rol",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "description": "admin/user/student/teacher"
+                }, {
+                    "in": "query",
+                    "name": "active",
+                    "schema": {
+                        "type": "boolean"
+                    },
+                    "description": "Defaults to true"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+
             }
-         ],
-         "responses": {
-           "200": {
-             "description": "{ uuid:uuid, message: Success }"
-           }
-         }
-       }
-     }
-   }
+        }
+    }
 }
