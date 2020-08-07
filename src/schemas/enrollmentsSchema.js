@@ -8,6 +8,6 @@ module.exports = {
     EnrollmentCourseID: Joi.string().guid({version: ['uuidv4']}).required(),
     EnrollmentCostCourse: Joi.number().required(),
     EnrollmentPaidOut: Joi.boolean().required(),
-    EnrollmentActive: Joi.boolean().required() //investigar como poner elemento activo Joi.boolean().truthy('yes').falsy('no').sensitive().required()
+    EnrollmentActive: Joi.boolean().required() 
   })
 }
