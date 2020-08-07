@@ -12,7 +12,7 @@ const handleErrors = (err, req, res, next) => {
           message: err.error.toString()
         });
     } else {
-        const { code, message } = err 
+        const { code = 500, message = 'An internal server error ocurred' } = err 
         res.status(code).send({ error: message })
     }
 }
