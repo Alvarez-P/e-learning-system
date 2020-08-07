@@ -11,6 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Enrollment.associate = function(models) {
+        Enrollment.hasOne(models.EnrollmentStudentID, {
+          foreignKey: 'EnrollmentStudentID',
+          as: 'student'
+        }),
+        Enrollment.hasOne(models.EnrollmentCourseID, {
+          foreignKey: 'EnrollmentCourseID',
+          as: 'course'
+        })
+      }
     }
   };
   Enrollment.init({
