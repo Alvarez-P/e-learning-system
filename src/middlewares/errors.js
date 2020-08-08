@@ -7,6 +7,7 @@
  * @param {Function} next - Express next middleware function
 */
 const handleErrors = (err, req, res, next) => {
+    console.log(err)
     if (err && err.error && err.error.isJoi) {
         res.status(400).json({
           message: err.error.toString()

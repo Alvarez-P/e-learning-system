@@ -13,15 +13,14 @@ const { addEnrollmentOnDB } = require('../db/methods/enrollments')
  */
 const addEnrollment = async (req, res, next) => {
     try {
-        req.body.EnrollmentID = encrypt(req.body.UserPassword, 10)
-        req.body.UserID = genrateID()
-        const result = await addUserOnDB(req.body, next)
-        res.status(201).send({ uuid: result.UserID, message: 'Success' })
+        req.body.EnrollmentID = genrateID()
+        const result = await addEnrollmentOnDB(req.body, next)
+        res.status(201).send({ uuid: result.EnrollmentID, message: 'Success' })
     } catch (error) {
         next(error)
     }
 }
 
 module.exports = {
-    addUser
+    addEnrollment
 }
