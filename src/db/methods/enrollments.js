@@ -17,6 +17,22 @@ const addEnrollmentOnDB = async (enrollment, next) => {
     }
 }
 
+/**
+ * @function deleteAllEnrollmentsOnDB
+ * @description Function to delete Enrollments on db, unicamente para los tests
+ */
+const deleteAllEnrollmentsOnDB = async() => {
+    try {
+        const deleteEnrollments = await Enrollment.destroy({
+            where: {},
+            truncate: true
+          })
+    } catch (error) {
+       console.log(error);
+    }
+}
+
 module.exports = {
-    addEnrollmentOnDB
+    addEnrollmentOnDB,
+    deleteAllEnrollmentsOnDB
 }
