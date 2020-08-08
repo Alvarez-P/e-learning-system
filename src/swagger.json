@@ -117,6 +117,22 @@
                 "tags": ["/enrollments"],
                 "description": "Save new enrollments",
                 "parameters": [{
+                        "name": "EnrollmentStudentID",
+                        "description": "uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "uuid"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentCourseID",
+                        "description": "uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "uuid"
+                        }
+                    },
+                    {
                         "name": "EnrollmentCostCourse",
                         "description": "Cost Course",
                         "required": true,
