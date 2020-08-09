@@ -4,9 +4,7 @@ const { addEnrollmentOnDB } = require('../db/methods/enrollments')
 
 /**
  * @function addEnrollments
- * @description Controller for POST /api/enrollments
- * 
- * 
+ * @description Controller for POST /api/enrollments 
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @param {Function} next - Express middleware function
