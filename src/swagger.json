@@ -109,6 +109,60 @@
                 }
 
             }
+        },
+        "/api/enrollments": {
+            "post": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "Save Enrollments",
+                "tags": ["/enrollments"],
+                "description": "Save new enrollments",
+                "parameters": [{
+                        "name": "EnrollmentStudentID",
+                        "description": "uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "uuid"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentCourseID",
+                        "description": "uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "uuid"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentCostCourse",
+                        "description": "Cost Course",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentPaidOut",
+                        "description": "Paid Out (true significa que fue pagado por completo)",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentActive",
+                        "description": "Active",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{ uuid:uuid, message: Success }"
+                    }
+                }
+            }            
         }
     }
 }

@@ -48,7 +48,6 @@ const deleteAllUsersOnDB = async() => {
             where: {},
             truncate: true
           })
-        if (!deleteUsers) throw new HttpError()
     } catch (error) {
        console.log(error);
     }
