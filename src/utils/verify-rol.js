@@ -2,6 +2,14 @@ require('dotenv').config()
 const { HttpError } = require("./HttpError")
 const { SECRET } = process.env
 
+/**
+ * @function getToken
+ * @description Function for get Token from header
+ * @param {Object} headers Object with request headers
+ * @param {Function} next Express middleware function
+ * @return {TOKEN} JWT string
+ * @return {next} Express middleware function
+ */
 const getToken = ({ headers, next}) => {
     try {
         let TOKEN 
@@ -18,7 +26,14 @@ const getToken = ({ headers, next}) => {
         next(error)
     }    
 }
-
+/**
+ * @function getRol
+ * @description Function for validate TOKEN and get rol from TOKEN
+ * @param {Object} TOKEN JWT string
+ * @param {Function} next Express middleware function
+ * @return {requestRol} User rol
+ * @return {next} Express middleware function
+*/
 const getRol = ({ TOKEN, next }) => {
     try {
         let requestRol = "user"
@@ -31,7 +46,15 @@ const getRol = ({ TOKEN, next }) => {
         next(error)
     }
 }
-
+/**
+ * @function validateRol
+ * @description Validate permissions for the route
+ * @param {Array} allowed Allowed roles for this route
+ * @return {Function} Function that catch the second params and validate the permissions
+ * 
+ * @param {Object} requestRol User rol
+ * @param {Function} next Express middleware function
+*/
 const validateRol = allowed => ({ requestRol, next }) => {
     try {
         if (allowed.indexOf(requestRol) > -1) next()
