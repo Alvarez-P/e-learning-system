@@ -109,6 +109,34 @@
                 }
 
             }
+        },
+        "/api/auth": {
+            "post": {
+                "description": "Login for users",
+                "tags": ["/auth"],
+                "parameters": [{
+                        "name": "UserEmail",
+                        "description": "Email of user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "UserPassword",
+                        "description": "Password(8 characters minimum)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
     }
 }
