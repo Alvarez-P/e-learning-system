@@ -137,6 +137,136 @@
                     }
                 }
             }
+        },
+        "/api/enrollments": {
+            "post": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "Save Enrollments",
+                "tags": ["/enrollments"],
+                "description": "Save new enrollments",
+                "parameters": [{
+                        "name": "EnrollmentStudentID",
+                        "description": "uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "uuid"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentCourseID",
+                        "description": "uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "uuid"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentCostCourse",
+                        "description": "Cost Course",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentPaidOut",
+                        "description": "Paid Out (true significa que fue pagado por completo)",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "EnrollmentActive",
+                        "description": "Active",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "201": {
+                    "description": "{ uuid:uuid, message: Success }"
+                }
+            }
+        },
+        "/api/course-templates": {
+            "post": {
+                "x-swagger-router-controller": "middleware-name1",
+                "operationId": "Save Course-Templates",
+                "tags": ["/course-templates"],
+                "description": "Save new course",
+                "parameters": [{
+                        "name": "CourseTemplateName",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateContent",
+                        "description": "Course content",
+                        "required": true,
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateRequirements",
+                        "description": "Course requirements",
+                        "required": true,
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateMaterial",
+                        "description": "Course Material",
+                        "required": true,
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateTeacher",
+                        "description": "Name teacher",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateDescription",
+                        "description": "Course Description",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateTags",
+                        "description": "Course tags",
+                        "required": true,
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "CourseTemplateActive",
+                        "description": "Course status",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{ uuid:uuid, message: Success }"
+                    }
+                }
+            }
         }
     }
 }
