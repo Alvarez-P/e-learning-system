@@ -33,8 +33,8 @@ const getUserOnDB = async(filters, next) => {
     } catch (error) {
         next(error)
     }
-
 }
+
 /**
  * @function deleteAllUsersOnDB
  * @description Function to delete Users on db, unicamente para los tests
@@ -47,9 +47,9 @@ const deleteAllUsersOnDB = async() => {
         const deleteUsers = await User.destroy({
             where: {},
             truncate: true
-          })
+        })
     } catch (error) {
-       console.log(error);
+        console.log(error);
     }
 }
 module.exports = {

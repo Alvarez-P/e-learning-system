@@ -1,9 +1,9 @@
 const request = require("supertest");
 const app = require("../../app");
-const {deleteAllUsersOnDB} = require('../db/methods/users')
+const { deleteAllUsersOnDB } = require('../db/methods/users')
 
 describe("POST /users", () => {
-    test("It should create a new User", async (done) => {
+    test("It should create a new User", async(done) => {
         await deleteAllUsersOnDB()
         request(app)
             .post("/api/users")
@@ -20,7 +20,7 @@ describe("POST /users", () => {
                 done();
             });
     })
-    test("You shouldn't create a new user for repeating mail", async (done) => {
+    test("You shouldn't create a new user for repeating mail", async(done) => {
         request(app)
             .post("/api/users")
             .send({
@@ -71,4 +71,43 @@ describe("GET /users", () => {
                     done();
                 });
         })
+});
+
+describe("POST /auth", () => {
+    test("It should login for the user and create a token", async(done) => {
+        request(app)
+            .post("/api/auth")
+            .send({
+                "UserEmail": "aeap@gmail.com",
+                "UserPassword": "12345738"
+            })
+            .then(response => {
+                expect(response.statusCode).toBe(201);
+                done();
+            });
+    })
+    test("You shouldn't login for the user or create a token because the password is wrong", async(done) => {
+        request(app)
+            .post("/api/auth")
+            .send({
+                "UserEmail": "aeap@gmail.com",
+                "UserPassword": "1234573814"
+            })
+            .then(response => {
+                expect(response.statusCode).toBe(401);
+                done();
+            });
+    })
+    test("You shouldn't login for the user or create a token because the email is wrong or not exits", async(done) => {
+        request(app)
+            .post("/api/auth")
+            .send({
+                "UserEmail": "aeap@gmail.comcom",
+                "UserPassword": "12345738"
+            })
+            .then(response => {
+                expect(response.statusCode).toBe(400);
+                done();
+            });
+    });
 });
