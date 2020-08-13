@@ -1,6 +1,6 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
-const { SECRET = 'Secret_key' } = process.env
+const { SECRET } = process.env
 
 /**
  * @function token

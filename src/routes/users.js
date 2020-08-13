@@ -7,7 +7,7 @@ const { addUser, getUser } = require('../controllers/users')
 const { validateIfEmailExists } = require('../middlewares/validate-users')
 const validatePermissions = require('../middlewares/validate-permissions')
 
-router.post('/', validatePermissions("admin"), validator.body(userCreateSchema), validateIfEmailExists, addUser)
+router.post('/', validatePermissions(), validator.body(userCreateSchema), validateIfEmailExists, addUser)
 router.get('/', validator.query(userGetSchema), getUser)
 
 module.exports = router

@@ -12,8 +12,8 @@ const validatePermissions = (...allowed) => {
         pipe(
             getToken,
             getRol,
-            validateRol(allowed)
-        )({ headers: request.headers, next })    
+            validateRol(allowed, next)
+        )({ headers: request.headers })    
     }    
 }
 
