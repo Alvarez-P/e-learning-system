@@ -23,7 +23,7 @@ async function auth(req, res, next) {
         req.body.UserRol = matchUser[0].dataValues.UserRol
         const TOKEN_ACCESS = generateToken(req.body, EXP_ACCESS_TOKEN)
         const TOKEN_REFRESH = generateToken(req.body, EXP_REFRESH_TOKEN)
-        res.status(201).send({
+        res.status(200).send({
             access_token: TOKEN_ACCESS,
             refresh_token: TOKEN_REFRESH
         })
