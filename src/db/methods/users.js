@@ -1,5 +1,6 @@
 const { User } = require('../models/index')
 const { HttpError } = require('../../utils/HttpError')
+const {Op} = require('sequelize')
 
 /**
  * @function addUserOnDB
@@ -44,8 +45,8 @@ const getUserOnDB = async(filters, next) => {
  */
 const deleteAllUsersOnDB = async() => {
     try {
-        const deleteUsers = await User.destroy({
-            where: {},
+        await User.destroy({
+            where: {UserID: {[Op.not]: '995f46e9-f2cc-4c8e-9e1e-db5aec60c063' }},
             truncate: true
         })
     } catch (error) {

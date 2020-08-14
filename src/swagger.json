@@ -7,63 +7,47 @@
     },
     "produces": ["application/json"],
     "host": "localhost:5000",
-    "basePath": "/",
+    "basePath": "/api",
     "paths": {
-        "/api/users": {
+        "/users": {
             "post": {
-                "x-swagger-router-controller": "middleware-name1",
-                "operationId": "Save Users",
+                "summary": "Add a new user",
                 "tags": ["/users"],
                 "description": "Save new users",
                 "parameters": [{
-                        "name": "UserName",
-                        "description": "Name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "UserLastName",
-                        "description": "Last Name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "UserEmail",
-                        "description": "Name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "UserPassword",
-                        "description": "Password(8 characters minimum)",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "UserRol",
-                        "description": "admin/user/student/teacher",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "UserActive",
-                        "description": "Name",
-                        "required": true,
-                        "schema": {
-                            "type": "boolean"
+                    "in": "body",
+                    "required": true,
+                    "name": "body",
+                    "description": "Object that needs to be added",
+                    "schema": {
+                        "properties": {
+                            "UserName":{
+                                "type":"string"
+                            },
+                            "UserLastName":{
+                                "type":"string"
+                            },
+                            "UserEmail":{
+                                "type":"string"
+                            },
+                            "UserPassword":{
+                                "type":"string"
+                            },
+                            "UserRol":{
+                                "type":"string"
+                            },
+                            "UserActive":{
+                                "type":"string"
+                            }
                         }
                     }
-                ],
+                },
+                {
+                    "in": "header",
+                    "name": "Authorization",
+                    "description": "Access token",
+                    "required": true
+                }],
                 "responses": {
                     "200": {
                         "description": "{ uuid:uuid, message: Success }"

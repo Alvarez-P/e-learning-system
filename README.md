@@ -41,11 +41,17 @@ Agregue modelos con el comando:
 sequelize model:generate --name User --attributes firstName:string,lastName:string
 ```
 
+`value` puede tomar los valores: `development`, `test`, `production`
+
 Ejecute la migracion con:
 ```sh
 sequelize db:migrate  --env="value"
 ```
-`value` puede tomar los valores: `development`, `test`, `production`
+
+Ejecutar los seeders:
+```sh
+sequelize db:migrate --env="value"
+```
 
 Inicie el servidor con el comando:
 ```sh

@@ -1,14 +1,16 @@
 const request = require("supertest");
 const app = require("../../app");
 const { deleteAllUsersOnDB } = require('../db/methods/users')
+const { TOKEN } = require('./mocks')
 
 describe("POST /users", () => {
     test("It should create a new User", async(done) => {
         await deleteAllUsersOnDB()
         request(app)
             .post("/api/users")
+            .set('Authorization', `Token ${TOKEN}`)
             .send({
-                "UserName": "Ian",
+                "UserName": "Esteban",
                 "UserLastName": "Alvarez",
                 "UserEmail": "aeap@gmail.com",
                 "UserPassword": "12345738",
@@ -16,6 +18,7 @@ describe("POST /users", () => {
                 "UserRol": "admin"
             })
             .then(response => {
+                console.log(response)
                 expect(response.statusCode).toBe(201);
                 done();
             });
@@ -82,7 +85,7 @@ describe("POST /auth", () => {
                 "UserPassword": "12345738"
             })
             .then(response => {
-                expect(response.statusCode).toBe(201);
+                expect(response.statusCode).toBe(200);
                 done();
             });
     })
