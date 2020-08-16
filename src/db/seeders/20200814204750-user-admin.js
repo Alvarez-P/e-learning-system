@@ -8,7 +8,7 @@ module.exports = {
       UserName: 'Nombre',
       UserLastName: 'Apellido',
       UserEmail: 'email@gmail.com',
-      UserPassword: encrypt('el2020', 10),
+      UserPassword: encrypt('elsys2020', 10),
       UserRol: 'admin',
       UserActive: true,
       createdAt: new Date(),
