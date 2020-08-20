@@ -26,5 +26,9 @@ module.exports = {
             Joi.string().valid('teacher'),
             Joi.string().valid('student'),
         )
+    }),
+
+    userGetByIdSchema: Joi.object({
+        id: Joi.string().required()
     })
 }
