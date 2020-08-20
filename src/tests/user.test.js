@@ -2,7 +2,6 @@ const request = require("supertest");
 const app = require("../../app");
 const { deleteAllUsersOnDB } = require('../db/methods/users')
 const { TOKEN } = require('./mocks')
-const { response } = require("../../app");
 
 describe("POST /users", () => {
     test("It should create a new User", async(done) => {
@@ -19,7 +18,6 @@ describe("POST /users", () => {
                 "UserRol": "admin"
             })
             .then(response => {
-                console.log(response)
                 expect(response.statusCode).toBe(201);
                 done();
             });
@@ -114,4 +112,34 @@ describe("POST /auth", () => {
                 done();
             });
     });
+});
+
+describe("GET /users/:id", () => {
+    test("You must return a user when the user ID is sent to you", done => {
+        request(app)
+            .get("/api/users/995f46e9-f2cc-4c8e-9e1e-db5aec60c063")
+            .set('Authorization', `Token ${TOKEN}`)
+            .then(response => {
+                expect(response.statusCode).toBe(200);
+                done();
+            });
+    })
+    test("It should return a message 'the user does not exist' because the userid is wrong", done => {
+        request(app)
+            .get("/api/users/995f46e9-f2cc-4c8e-9e1e-db5aec60c073")
+            .set('Authorization', `Token ${TOKEN}`)
+            .then(response => {
+                expect(response.statusCode).toBe(401);
+                done();
+            });
+    })
+    test("It should return a header error message because the token is needed", done => {
+        request(app)
+            .get("/api/users/995f46e9-f2cc-4c8e-9e1e-db5aec60c063")
+            .set('Authorization', `Token `)
+            .then(response => {
+                expect(response.statusCode).toBe(400);
+                done();
+            });
+    })
 });
