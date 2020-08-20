@@ -1,6 +1,7 @@
 version: '3.1'
 services :
   db:
+    container_name: postgres-cont
     image: postgres:10-alpine
     restart: always
     ports:
@@ -9,6 +10,7 @@ services :
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
   admin:
+    container_name: adminer-cont
     image: adminer
     restart: always
     depends_on: 

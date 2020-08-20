@@ -25,7 +25,10 @@ npm i
 
 ## Deployment :package:
 
-Para iniciar el proyecto es necesario tener una instancia de Postgres. Para ello ingrese su configuracion en un archivo `config.json` con un formato similar al archivo `src/db/config/config.example.json` e ingrese las mismas en el archivo `docker-compose.yml`, ejecute este último con:
+Para iniciar el proyecto es necesario tener una instancia de Postgres. Para ello ingrese su configuracion en un archivo `config.json` con un formato similar al archivo `src/db/config/config.example.json` e ingrese las mismas en el archivo `docker-compose.yml`.
+
+### Para ejecutar el servidor localmente 
+Ejecute el archivo `docker-compose.yml` con:
 
 ```sh
 docker-compose up -d
@@ -50,20 +53,78 @@ sequelize db:migrate  --env="value"
 
 Ejecutar los seeders:
 ```sh
-sequelize db:migrate --env="value"
+sequelize db:seed:all --env="value"
 ```
 
 Inicie el servidor con el comando:
 ```sh
 nodemon
 ```
+
+### Para ejecutar el servidor en un contenedor
+
+Cambie el valor de host en el archivo `config.json` de Postgres por `postgres-cont`, y ejecute los servicios con:
+
+```bash
+docker-compose up -d
+```
+
+Cree una nueva red para los 3 contenedores:
+
+```bash
+docker network create net-node 
+```
+Conecte los servicios a la red:
+
+```bash
+# Postgres
+docker network connect net-node postgres-cont 
+
+# Adminer
+docker network connect net-node adminer-cont 
+```
+
+Crear imagen de la aplicacion de node
+```bash
+docker build . -t app:latest  
+```
+
+Ejecute el contenedor de node:
+```bash
+# app es el nombre de la imagen
+docker run -it --name node-app -p 5000:5000 app bash
+```
+
+En otra terminal conecte el contenedor de node a la red:
+```bash
+docker network connect net-node node-app
+```
+
+Ahora en la terminal de contenedor ejecute los comandos de sequelize:
+```bash
+# Create db
+sequelize db:create --env=development
+
+# Exec migrations on db
+sequelize db:migrate --env=development
+
+# Exec seeders on db
+sequelize db:seed:all --env=development
+```
+
+Ejecute el servidor:
+```bash
+node server.js
+```
+
 Para ver la documentacion ingrese a la ruta: `http://localhost:5000/api/docs`
+
+Para ejecutar los tests es necesario ejecutar los comandos de sequelize con la bandera `--env=test`
 
 Ejecute los tests con:
 ```sh
 npm run test
 ```
-
 ## Built With :hammer_and_wrench:
 - [Node](https://nodejs.org/es/)
     * [Express](https://expressjs.com/)
