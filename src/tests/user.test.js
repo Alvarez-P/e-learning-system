@@ -2,6 +2,7 @@ const request = require("supertest");
 const app = require("../../app");
 const { deleteAllUsersOnDB } = require('../db/methods/users')
 const { TOKEN } = require('./mocks')
+const { response } = require("../../app");
 
 describe("POST /users", () => {
     test("It should create a new User", async(done) => {
