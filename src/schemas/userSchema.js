@@ -29,6 +29,6 @@ module.exports = {
     }),
 
     userGetByIdSchema: Joi.object({
-        id: Joi.string().required()
+        id: Joi.string().guid({ version: ['uuidv4'] }).required()
     })
 }
