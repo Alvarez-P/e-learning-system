@@ -15,39 +15,40 @@
                 "tags": ["/users"],
                 "description": "Save new users",
                 "parameters": [{
-                    "in": "body",
-                    "required": true,
-                    "name": "body",
-                    "description": "Object that needs to be added",
-                    "schema": {
-                        "properties": {
-                            "UserName":{
-                                "type":"string"
-                            },
-                            "UserLastName":{
-                                "type":"string"
-                            },
-                            "UserEmail":{
-                                "type":"string"
-                            },
-                            "UserPassword":{
-                                "type":"string"
-                            },
-                            "UserRol":{
-                                "type":"string"
-                            },
-                            "UserActive":{
-                                "type":"string"
+                        "in": "body",
+                        "required": true,
+                        "name": "body",
+                        "description": "Object that needs to be added",
+                        "schema": {
+                            "properties": {
+                                "UserName": {
+                                    "type": "string"
+                                },
+                                "UserLastName": {
+                                    "type": "string"
+                                },
+                                "UserEmail": {
+                                    "type": "string"
+                                },
+                                "UserPassword": {
+                                    "type": "string"
+                                },
+                                "UserRol": {
+                                    "type": "string"
+                                },
+                                "UserActive": {
+                                    "type": "string"
+                                }
                             }
                         }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Access token",
+                        "required": true
                     }
-                },
-                {
-                    "in": "header",
-                    "name": "Authorization",
-                    "description": "Access token",
-                    "required": true
-                }],
+                ],
                 "responses": {
                     "200": {
                         "description": "{ uuid:uuid, message: Success }"
@@ -91,7 +92,32 @@
                         "description": "OK"
                     }
                 }
-
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "summary": "Gets a user by id.",
+                "tags": ["/users/:id"],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Access token",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             }
         },
         "/api/auth": {

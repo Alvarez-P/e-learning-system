@@ -1,7 +1,8 @@
-const encrypt = require('../utils/encrypt')
-const genrateID = require('../utils/generateID')
 const { addUserOnDB, getUserOnDB } = require('../db/methods/users')
 const { buildUserFilters } = require('../db/buildFilters/users');
+const { HttpError } = require('../utils/HttpError')
+const encrypt = require('../utils/encrypt')
+const genrateID = require('../utils/generateID')
 
 /**
  * @function addUser
@@ -46,7 +47,30 @@ const getUser = async(req, res, next) => {
     }
 }
 
+/**
+ * @function getUserById
+ * @description Controller for GET with UserID /api/users/:id
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Function} next 
+ */
+
+const getUserById = async(req, res, next) => {
+    try {
+        let UserID = req.params.id
+        let user = await getUserOnDB({ UserID }, next)
+        if (user.length > 0) {
+            res.status(200).send({
+                result: user
+            })
+        } else { throw new HttpError('user not exist', 401) }
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     addUser,
-    getUser
+    getUser,
+    getUserById
 }
