@@ -11,7 +11,7 @@ describe('POST /course-templates', () => {
             CourseTemplateRequirements: ['JavaScript', 'npm install'],
             CourseTemplateMaterial: ['URL1', 'URL2'],
             CourseTemplateTeacher: 'Juan López',
-            CourseTemplateDescription: true,
+            CourseTemplateDescription: 'Introducción a Nodejs',
             CourseTemplateTags: ['Backend', 'JS', 'Restful'],
             CourseTemplateActive: true
         })

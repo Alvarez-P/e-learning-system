@@ -21,6 +21,7 @@ async function auth(req, res, next) {
         const match = await matchPassword(matchUser[0].dataValues.UserPassword, UserPassword)
         if (!match) throw new HttpError('Invalid credentials', 401)
         req.body.UserRol = matchUser[0].dataValues.UserRol
+        req.body.UserID = matchUser[0].dataValues.UserID
         const TOKEN_ACCESS = generateToken(req.body, EXP_ACCESS_TOKEN)
         const TOKEN_REFRESH = generateToken(req.body, EXP_REFRESH_TOKEN)
         res.status(200).send({

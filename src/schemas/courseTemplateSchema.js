@@ -7,7 +7,7 @@ module.exports = {
         CourseTemplateRequirements: Joi.array().required(),
         CourseTemplateMaterial: Joi.array().required(),
         CourseTemplateTeacher: Joi.string().required(),
-        CourseTemplateDescription: Joi.boolean().required(),
+        CourseTemplateDescription: Joi.string().required(),
         CourseTemplateTags: Joi.array().required(),
         CourseTemplateActive: Joi.boolean().required()
 

@@ -9,7 +9,7 @@ module.exports = {
       UserLastName: 'Apellido',
       UserEmail: 'email@gmail.com',
       UserPassword: encrypt('elsys2020', 10),
-      UserRol: 'admin',
+      UserRol: ['admin'],
       UserActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

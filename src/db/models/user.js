@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     UserLastName: DataTypes.STRING,
     UserEmail: DataTypes.STRING,
     UserPassword: DataTypes.STRING,
-    UserRol: DataTypes.STRING,
+    UserRol: DataTypes.ARRAY(DataTypes.STRING),
     UserActive: DataTypes.BOOLEAN
   }, {
     sequelize,

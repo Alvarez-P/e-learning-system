@@ -8,14 +8,12 @@ describe("POST /users", () => {
         await deleteAllUsersOnDB()
         request(app)
             .post("/api/users")
-            .set('Authorization', `Token ${TOKEN}`)
             .send({
                 "UserName": "Esteban",
                 "UserLastName": "Alvarez",
                 "UserEmail": "aeap@gmail.com",
                 "UserPassword": "12345738",
-                "UserActive": true,
-                "UserRol": "admin"
+                "UserActive": true
             })
             .then(response => {
                 expect(response.statusCode).toBe(201);
