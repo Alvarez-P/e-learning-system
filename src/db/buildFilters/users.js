@@ -16,7 +16,7 @@ const buildUserFilters = (query, next) => {
             [Op.eq]: active
         }
         if (query.rol) filters.UserRol = {
-            [Op.eq]: query.rol
+            [Op.contains]: [query.rol]
         }
         return {
             offset,

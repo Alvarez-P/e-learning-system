@@ -49,7 +49,10 @@ const getRol = (getTokenResult) => {
 const validateRol = (allowed, next) => (getRolResult) => {
     try {
         if(getRolResult.error) throw new HttpError(getRolResult.error, getRolResult.code)
-        if(allowed.length > 0 && allowed.indexOf(getRolResult.rol) === -1) throw new HttpError('Permission denied for role', 401)
+        const allowedSet = new Set(allowed)
+        const userRoles = new Set(getRolResult.rol)
+        const intersection = Array.from(allowedSet).filter(rol => userRoles.has(rol))
+        if(allowed.length > 0 && intersection.length === 0) throw new HttpError('Permission denied for role', 401)
         next()
     } catch (error) {
         next(error)

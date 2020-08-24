@@ -4,7 +4,7 @@ const { generateToken } = require('../utils/token')
 const data = {
     UserEmail: "email@gmail.com",
     UserPassword: "elsys2020",
-    UserRol: "admin"
+    UserRol: ["admin"]
 }
 const TOKEN = generateToken(data, 10)
 

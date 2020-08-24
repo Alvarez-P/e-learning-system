@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     CourseTeplateRequirements: DataTypes.ARRAY(DataTypes.STRING),
     CourseTemplateMaterial: DataTypes.ARRAY(DataTypes.STRING),
     CourseTemlateTeacher: DataTypes.STRING,
-    CourseTemplateDescription: DataTypes.BOOLEAN,
+    CourseTemplateDescription: DataTypes.STRING,
     CourseTempleteTags: DataTypes.ARRAY(DataTypes.STRING),
     CourseTemplateActive: DataTypes.BOOLEAN
   }, {
